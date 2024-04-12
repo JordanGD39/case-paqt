@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/resident/{resident}', 'App\Http\Controllers\ResidentController@show')->name('resident.fetch');
 Route::get('/residents', 'App\Http\Controllers\ResidentController@showAll')->name('residents.fetchAll');
 Route::post('/residents', 'App\Http\Controllers\ResidentController@create')->name('residents.post');
-//Route::post('/residents/{resident}', 'App\Http\Controllers\ResidentController@validateRent')->name('resident.validateRent');
 Route::delete('/residents/{resident}', 'App\Http\Controllers\ResidentController@delete')->name('resident.delete');
 
 //Rides

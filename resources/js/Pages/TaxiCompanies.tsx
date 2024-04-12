@@ -22,12 +22,14 @@ export default function TaxiCompanies() {
         <DefaultContainer contentHeaderText='Bedrijven'>
             <Table heads={['Naam', 'Locatie', "Ritten bekijken"]}>
                 {taxiCompanies.map((company) => 
-                    <tr className='border-b'>
+                    <tr className='border-b' key={company.id}>
                         <TableRowItem>{company.name}</TableRowItem>
                         <TableRowItem>{ApiUtils.formatLocation(company.location)}</TableRowItem>
-                        <Link className='ml-3 w-fit block' href={route('taxiCompanyPage', {taxiCompany: company.id})}>
-                            <TableButton extraClassName='justify-start w-fit'>Bekijken</TableButton>
-                        </Link>
+                        <td>
+                            <Link className='ml-3 w-fit block' href={route('taxiCompanyPage', {taxiCompany: company.id})}>
+                                <TableButton extraClassName='justify-start w-fit'>Bekijken</TableButton>
+                            </Link>
+                        </td>
                     </tr>
                 )}
             </Table>

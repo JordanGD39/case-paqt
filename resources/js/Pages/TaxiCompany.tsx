@@ -21,7 +21,7 @@ export default function TaxiCompany() {
         <DefaultContainer contentHeaderText='Ritten'>
             {taxiCompany && taxiCompany.rides.length > 0 ? <Table heads={['Bewoner', 'Tijd', 'Locatie']}>
                 {taxiCompany.rides.map((ride) => 
-                    <tr>
+                    <tr key={ride.id}>
                         <TableRowItem>{ride.resident[0].name}</TableRowItem>
                         <TableRowItem>{ride.time}</TableRowItem>
                         <TableRowItem>{ApiUtils.formatLocation(ride.resident[0].adressLocation)}</TableRowItem>

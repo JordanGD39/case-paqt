@@ -37,7 +37,9 @@ export default function CallCenter() {
           <ResidentsTable 
             buttonHead="Rit inboeken" 
             button={(resident) =>
-              <TableButton onClick={() => {setShowModal(true); setCurrentResident(resident)}}>Boeken</TableButton>
+              <td>
+                <TableButton onClick={() => {setShowModal(true); setCurrentResident(resident)}}>Boeken</TableButton>
+              </td>
             }/>
         </DefaultContainer>
       </PageLayout>

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Resident;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use DateTime;
 use DateInterval;
+use Illuminate\Support\Facades\Schedule;
 
 class ResidentController extends Controller
 {
+
     public function create(Request $request)
     {
         $request->validate($this->rules());
@@ -41,8 +42,14 @@ class ResidentController extends Controller
         return response()->json($data);
     }
 
+    //Check renewals daily with the schedule command
+    public function checkAllRenewals() {
+        foreach (Resident::all() as $resident) { 
+            $this->checkRenewal($resident);
+        }
+    }
+
     protected function checkRenewal(Resident $resident) {
-        
         $renewalDate = DateTime::createFromFormat('Y-m-d', $resident->renewalDate);
         $now = new DateTime();
 
